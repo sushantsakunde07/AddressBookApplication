@@ -10,7 +10,6 @@ public class AddressBookDto {
     public String zipCode;
     public Long phoneNumber;
     public String emailId;
-
     @Override
     public String toString() {
         return "AddressBookDto{" +
