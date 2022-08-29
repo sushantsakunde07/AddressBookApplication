@@ -27,7 +27,7 @@ public class AddressBookServiceImpl implements AddressBookService{
     }
 
     @Override
-    public Person createAdddressBookDetails(AddressBookDto addressBookDto) {
+    public Person createAddressBookDetails(AddressBookDto addressBookDto) {
         Person person = null;
         person = new Person(personList.size() + 1, addressBookDto);
         personList.add(person);

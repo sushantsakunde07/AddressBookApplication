@@ -7,7 +7,7 @@ import java.util.List;
 public interface AddressBookService {
     List<Person> getAddressBookDetails();
     Person getAddressDetailsById(int personId);
-    Person createAdddressBookDetails(AddressBookDto addressBookDto);
+    Person createAddressBookDetails(AddressBookDto addressBookDto);
     Person updateAddressBookDetails(int personId, AddressBookDto addressBookDto);
     void deleteAddressDetails(int personId);
 
