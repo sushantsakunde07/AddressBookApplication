@@ -1,0 +1,6 @@
+2022-08-30 11:33:57.772  INFO 5732 --- [main] c.b.a.AddressBookApplication             : Starting AddressBookApplication using Java 11.0.16 on LAPTOP-B6S4L3UQ with PID 5732 (C:\Users\susha\IdeaProjects\AddressBookApplication\target\classes started by susha in C:\Users\susha\IdeaProjects\AddressBookApplication)
+2022-08-30 11:33:57.779 DEBUG 5732 --- [main] c.b.a.AddressBookApplication             : Running with Spring Boot v2.7.3, Spring v5.3.22
+2022-08-30 11:33:57.779  INFO 5732 --- [main] c.b.a.AddressBookApplication             : No active profile set, falling back to 1 default profile: "default"
+2022-08-30 11:33:59.099  INFO 5732 --- [main] c.b.a.AddressBookApplication             : Started AddressBookApplication in 1.72 seconds (JVM running for 2.485)
+2022-08-30 11:33:59.103  INFO 5732 --- [main] c.b.a.AddressBookApplication             : Address Book Started in COMMON Environment
+2022-08-30 11:33:59.104  INFO 5732 --- [main] c.b.a.AddressBookApplication             : Address Book DB User in root
