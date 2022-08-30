@@ -1,4 +1,5 @@
 package com.bridgelabz.addressbookapplication.dto;
+
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 
