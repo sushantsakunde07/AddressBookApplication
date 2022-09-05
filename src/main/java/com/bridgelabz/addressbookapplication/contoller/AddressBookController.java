@@ -14,9 +14,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/addressbookservice")
 public class AddressBookController {
-
+@Valid
     @Autowired
     private AddressBookService addressBookService;
 

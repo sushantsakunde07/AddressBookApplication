@@ -1,12 +1,13 @@
 package com.bridgelabz.addressbookapplication.entity;
 
 import com.bridgelabz.addressbookapplication.dto.AddressBookDto;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Person {
+public @Data class Person {
     private int personId;
     private String firstName;
     private String lastName;
@@ -14,8 +15,8 @@ public class Person {
     private String address;
     private String city;
     private String state;
-    private int zipCode;
-    private Long phoneNumber;
+    private String zipCode;
+    private String phoneNumber;
     private String emailId;
 
     public Person(int personId, AddressBookDto addressBookDto) {
