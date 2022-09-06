@@ -21,4 +21,9 @@ public class AddressBookExceptionalHandler {
         ResponseDto responseDTO = new ResponseDto("Exception while processing REST request", errMsg);
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(AddressBookException.class)
+    public ResponseEntity<ResponseDto> handleAddressBookException(AddressBookException exception){
+        ResponseDto responseDTO = new ResponseDto("Exception while processing REST Request",exception.getMessage());
+        return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
+    }
 }

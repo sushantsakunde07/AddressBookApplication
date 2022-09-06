@@ -17,7 +17,7 @@ import java.util.List;
 
 @RequestMapping("/addressbookservice")
 public class AddressBookController {
-@Valid
+    @Valid
     @Autowired
     private AddressBookService addressBookService;
 
@@ -46,15 +46,16 @@ public class AddressBookController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ResponseDto> updateAddressBookDetails(@PathVariable("id") int personId,@Valid @RequestBody AddressBookDto addressBookDto) {
+    public ResponseEntity<ResponseDto> updateAddressBookDetails(@PathVariable("id") int personId, @Valid @RequestBody AddressBookDto addressBookDto) {
         Person person = null;
         person = addressBookService.updateAddressBookDetails(personId, addressBookDto);
         ResponseDto responseDto = new ResponseDto("Updates Address Book data successfully !", person);
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteAddressBookDetails(@PathVariable("id") int personId) {
         addressBookService.deleteAddressDetails(personId);
-        return new ResponseEntity<>("Deleted Address Book Data Succesfully !", HttpStatus.OK);
+        return new ResponseEntity<>("Deleted Address Book Data Successfully !", HttpStatus.OK);
     }
 }
