@@ -1,10 +1,10 @@
 package com.bridgelabz.addressbookapplication.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 
 import javax.validation.constraints.*;
+import java.util.List;
 
 
 public @Data class AddressBookDto {
@@ -25,7 +25,6 @@ public @Data class AddressBookDto {
     public String zipCode;
     @Pattern(regexp = "^[789][0-9]{9}$", message = "Phone Number Is Invalid")
     public String phoneNumber;
-    @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",flags = Pattern.Flag.CASE_INSENSITIVE,message = "Email Id Is Invalid")
-    public String emailId;
+    public List<String> emailId;
 
 }

@@ -6,9 +6,9 @@ import com.bridgelabz.addressbookapplication.entity.Person;
 import java.util.List;
 public interface AddressBookService {
     List<Person> getAddressBookDetails();
-    Person getAddressDetailsById(int personId);
+    Person getAddressDetailsById(Long personId);
     Person createAddressBookDetails(AddressBookDto addressBookDto);
-    Person updateAddressBookDetails(int personId, AddressBookDto addressBookDto);
-    void deleteAddressDetails(int personId);
+    Person updateAddressBookDetails(Long personId, AddressBookDto addressBookDto);
+    void deleteAddressDetails(Long personId);
 
 }

@@ -1,28 +1,31 @@
 package com.bridgelabz.addressbookapplication.service;
+
 import com.bridgelabz.addressbookapplication.dto.AddressBookDto;
 import com.bridgelabz.addressbookapplication.entity.Person;
 import com.bridgelabz.addressbookapplication.exception.AddressBookException;
+import com.bridgelabz.addressbookapplication.repository.AddressBookRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AddressBookServiceImpl implements AddressBookService{
-
+@Slf4j
+public class AddressBookServiceImpl implements AddressBookService {
+    @Autowired
+    private AddressBookRepository addressBookRepository;
     private List<Person> personList = new ArrayList<>();
 
     @Override
     public List<Person> getAddressBookDetails() {
-        return personList;
+        return addressBookRepository.findAll();
     }
 
     @Override
-    public Person getAddressDetailsById(int personId) {
-        return personList.stream()
-                .filter(person -> person.getPersonId() == personId)
-                .findFirst()
-                .orElseThrow(() -> new AddressBookException("User Not Found"));
+    public Person getAddressDetailsById(Long personId) {
+        return addressBookRepository.findById(personId).orElseThrow(() -> new AddressBookException("User Not Found"));
     }
 
     // @Override
@@ -38,12 +41,13 @@ public class AddressBookServiceImpl implements AddressBookService{
     public Person createAddressBookDetails(AddressBookDto addressBookDto) {
         Person person = null;
         person = new Person(personList.size() + 1, addressBookDto);
+        log.debug("User Data: " + personList.toString());
         personList.add(person);
         return person;
     }
 
     @Override
-    public Person updateAddressBookDetails(int personId, AddressBookDto addressBookDto) {
+    public Person updateAddressBookDetails(Long personId, AddressBookDto addressBookDto) {
         Person personDetails = this.getAddressDetailsById(personId);
         personDetails.setFirstName(addressBookDto.firstName);
         personDetails.setLastName(addressBookDto.lastName);
@@ -58,7 +62,7 @@ public class AddressBookServiceImpl implements AddressBookService{
     }
 
     @Override
-    public void deleteAddressDetails(int personId) {
+    public void deleteAddressDetails(Long personId) {
         Person personDetails = this.getAddressDetailsById(personId);
         personList.remove(personDetails);
     }
