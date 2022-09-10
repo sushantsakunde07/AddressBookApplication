@@ -4,6 +4,7 @@ import com.bridgelabz.addressbookapplication.dto.ResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,23 +17,27 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 @Slf4j
 public class AddressBookExceptionalHandler {
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ResponseDto> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
+    private static final String message = "Exception while processing REST Request";
+
+    @ExceptionHandler(HttpMessageConversionException.class)
+    public ResponseEntity<ResponseDto> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception) {
         log.error("JSON parse error", exception);
-        ResponseDto responseDTO = new ResponseDto("Exception while processing REST request", "array");
+        ResponseDto responseDTO = new ResponseDto(message, 400, "array");
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
-        List<String> errMsg = errorList.stream().map(objErr -> objErr.getDefaultMessage())
+        List<String> errMesg = errorList.stream().map(objErr -> objErr.getDefaultMessage())
                 .collect(Collectors.toList());
-        ResponseDto responseDTO = new ResponseDto("Exception while processing REST request", errMsg);
+        ResponseDto responseDTO = new ResponseDto(message, 400, errMesg);
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(AddressBookException.class)
-    public ResponseEntity<ResponseDto> handleAddressBookException(AddressBookException exception){
-        ResponseDto responseDTO = new ResponseDto("Exception while processing REST Request",exception.getMessage());
+    public ResponseEntity<ResponseDto> handleAddressBookException(AddressBookException exception) {
+        ResponseDto responseDTO = new ResponseDto(message, 400, exception.getMessage());
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 }

@@ -1,13 +1,16 @@
 package com.bridgelabz.addressbookapplication.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.validation.constraints.*;
 import java.util.List;
 
-public @ToString
-@Data class AddressBookDto {
+@Getter
+@Setter
+public @ToString class AddressBookDto {
+
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "User's first name is Invalid")
     public String firstName;
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "User's last name is Invalid")
@@ -16,7 +19,7 @@ public @ToString
     public String gender;
     @NotBlank(message = "Address cannot be Empty")
     public String address;
-    @Pattern(regexp = "^[A-Z][a-z]+$", message = "City Name is Invalid")
+    @Pattern(regexp = "^[A-Z][a-z]+[\\s[A-Z][a-z]+]*$", message = "City Name is Invalid")
     public String city;
     @Pattern(regexp = "^[A-Z][a-z]+[\\s[A-Z][a-z]+]*$", message = "State Name is Invalid")
     public String state;
@@ -24,5 +27,8 @@ public @ToString
     public String zipCode;
     @Pattern(regexp = "^[789][0-9]{9}$", message = "Phone Number Is Invalid")
     public String phoneNumber;
-    public List<String> emailId;
+    public String emailId;
+    @NotNull(message = "Password should not be null")
+    public String password;
+
 }

@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public @Data class ResponseDto {
     private String message;
+    private int statusCode;
     private Object data;
 
 }
