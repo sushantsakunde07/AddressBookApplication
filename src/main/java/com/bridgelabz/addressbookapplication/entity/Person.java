@@ -4,17 +4,17 @@ import com.bridgelabz.addressbookapplication.dto.AddressBookDto;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "user_address_book")
-
 public @Data class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "personId")
-    private Long personId;
+    private int personId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -35,9 +35,10 @@ public @Data class Person {
     @ElementCollection
     @CollectionTable(name = "person_emailId", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "emailId")
-    private List<String> emailId;
+    private List<String> emailId = new ArrayList<>();
 
     public Person(int i, AddressBookDto addressBookDto) {
+
     }
 
     public Person(AddressBookDto addressBookDTO) {
