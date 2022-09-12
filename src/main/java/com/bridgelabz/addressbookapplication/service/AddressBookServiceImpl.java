@@ -37,7 +37,6 @@ public class AddressBookServiceImpl implements AddressBookService{
         }
         throw new AddressBookException("User not present");
     }
-
     @Override
     public Person getAddressBookDetailsById(Long personId) {
         return addressBookRepository.findById(personId)
@@ -86,7 +85,7 @@ public class AddressBookServiceImpl implements AddressBookService{
         person = new Person(addressBookDTO);
         log.debug("User Data: " +person.toString());
         String body = "Contact added successfully with Id is " + person.getPersonId();
-        String subject = "Contact registration successfull";
+        String subject = "Contact registration successfully";
         mailService.send(person.getEmailId(),body,subject);
         return addressBookRepository.save(person);
     }

@@ -31,7 +31,6 @@ public @Data class Person {
     private String phoneNumber;
     @Column(name = "emailId")
     private String emailId;
-
     private String password;
 
     public Person() {
@@ -41,7 +40,6 @@ public @Data class Person {
     public Person(AddressBookDto addressBookDTO) {
         this.updateAddressBookData(addressBookDTO);
     }
-
 
     public void updateAddressBookData(AddressBookDto addressBookDTO) {
         this.firstName = addressBookDTO.firstName;
@@ -143,5 +141,4 @@ public @Data class Person {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

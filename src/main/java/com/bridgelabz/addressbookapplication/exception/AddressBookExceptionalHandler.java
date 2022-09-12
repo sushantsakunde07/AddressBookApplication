@@ -37,7 +37,7 @@ public class AddressBookExceptionalHandler {
 
     @ExceptionHandler(AddressBookException.class)
     public ResponseEntity<ResponseDto> handleAddressBookException(AddressBookException exception) {
-        ResponseDto responseDTO = new ResponseDto(message, 400, exception.getMessage());
+        ResponseDto responseDTO = new ResponseDto(message, 402, exception.getMessage());
         return new ResponseEntity<ResponseDto>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 }
